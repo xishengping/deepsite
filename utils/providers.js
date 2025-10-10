@@ -8,14 +8,28 @@
 
 export const MODELS = [
   {
+    value: "deepseek-v3.2-exp",
+    label: "Deepseek-V3.2-exp",
+    providers: ["qwen"],
+    autoProvider: "qwen",
+    isNew: true
+  },
+  {
+    value: "qwen3-coder-plus",
+    label: "Qwen3-Coder",
+    providers: ["qwen"],
+    autoProvider: "qwen",
+
+  },
+  {
     value: "deepseek-v3",
     label: "DeepSeek V3",
     providers: ["qwen"],
     autoProvider: "qwen",
   },
   {
-    value: "qwen-max",
-    label: "Qwen-max",
+    value: "qwen-plus",
+    label: "Qwen-plus",
     providers: ["qwen"],
     autoProvider: "qwen",
   },
@@ -24,8 +38,6 @@ export const MODELS = [
     label: "DeepSeek R1 0528",
     providers: ["qwen"],
     autoProvider: "qwen",
-    isNew: true,
-    isThinker: true,
   },
 ];
 
