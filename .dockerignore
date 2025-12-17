@@ -1,0 +1,29 @@
+# 依赖目录
+node_modules/
+
+# Git
+.git/
+.gitignore
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志
+*.log
+npm-debug.log*
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+
+# 文档
+README.md
+LICENSE
+
