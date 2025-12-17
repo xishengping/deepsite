@@ -1,6 +1,7 @@
 // import classNames from "classnames";
+import { useState } from "react";
 import { PiGearSixFill } from "react-icons/pi";
-import { useEffect } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 // @ts-expect-error not needed
@@ -30,9 +31,8 @@ function Settings({
   onModelChange: (model: string) => void;
 }) {
   const [apiKey, setApiKey] = useLocalStorage("bailian_api_key", "");
-  useEffect(() => {
-    setApiKey(""); // 设置为空字符串即清空输入框
-  }, []);
+  const [showApiKey, setShowApiKey] = useState(false);
+
   const handleChangeModel = (newModel: string) => {
     onModelChange(newModel);
   };
@@ -84,13 +84,22 @@ function Settings({
             {/* API Key 输入 */}
             <label className="block">
               <p className="text-neutral-300 text-sm mb-2">Bailian API Key</p>
-              <input
-                type="text"
-                value={apiKey || ""}
-                onChange={(e) => setApiKey(e.target.value)}
-                className="w-full border border-gray-700 rounded-md px-3 py-2 bg-neutral-950 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter Bailian API Key"
-              />
+              <div className="relative">
+                <input
+                  type={showApiKey ? "text" : "password"}
+                  value={apiKey || ""}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  className="w-full border border-gray-700 rounded-md px-3 py-2 pr-10 bg-neutral-950 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter Bailian API Key"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowApiKey(!showApiKey)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-200 transition-colors"
+                >
+                  {showApiKey ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                </button>
+              </div>
               <p className="text-xs text-neutral-400 mt-1">
                 This will be used for calling Bailian platform.
               </p>

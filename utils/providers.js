@@ -8,11 +8,17 @@
 
 export const MODELS = [
   {
+    value: "deepseek-v3.2",
+    label: "Deepseek-V3.2",
+    providers: ["qwen"],
+    autoProvider: "qwen",
+    isNew: true
+  },
+  {
     value: "deepseek-v3.2-exp",
     label: "Deepseek-V3.2-exp",
     providers: ["qwen"],
     autoProvider: "qwen",
-    isNew: true
   },
   {
     value: "qwen3-coder-plus",

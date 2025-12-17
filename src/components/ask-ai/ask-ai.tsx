@@ -53,7 +53,15 @@ function AskAI({
   const [isThinking, setIsThinking] = useState(true);
   const [controller, setController] = useState<AbortController | null>(null);
 
-  const [apiKey] = useLocalStorage("bailian_api_key", "");
+  // 获取最新的 API key（直接从 localStorage 读取，确保获取最新值）
+  const getApiKey = () => {
+    try {
+      const stored = localStorage.getItem("bailian_api_key");
+      return stored ? JSON.parse(stored) : "";
+    } catch {
+      return "";
+    }
+  };
 
   const audio = new Audio(SuccessSound);
   audio.volume = 0.5;
@@ -82,7 +90,7 @@ function AskAI({
           method: "PUT",
           body: JSON.stringify({
             prompt,
-            apiKey,
+            apiKey: getApiKey(),
             previousPrompt,
             html,
           }),
@@ -121,7 +129,7 @@ function AskAI({
           body: JSON.stringify({
             prompt,
             // provider,
-            apiKey,
+            apiKey: getApiKey(),
             model,
             redesignMarkdown,
           }),

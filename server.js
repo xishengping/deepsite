@@ -224,7 +224,7 @@ app.post("/api/ask-ai", async (req, res) => {
 
   const { prompt, model, apiKey,redesignMarkdown } = req.body;
 
-  console.log("api-key为"+ apiKey,"model为"+model,req.body);
+  console.log("prompt:", prompt, "| model:", model);
   if (!model) {
     return res.status(400).send({
       ok: false,
